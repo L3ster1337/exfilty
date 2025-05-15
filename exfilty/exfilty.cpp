@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
 
     const char* url_arg = argv[1];
     const char* input_path = argv[2];
-    const char* key = "secreta123";
+    const char* key = "secret123";
 
     HANDLE hFile = CreateFileA(input_path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
     if (hFile == INVALID_HANDLE_VALUE) {

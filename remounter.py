@@ -3,7 +3,7 @@ import sys
 def xor(data, key):
     return bytes([b ^ key[i % len(key)] for i, b in enumerate(data)])
 
-XOR_KEY = b'secreta123' # here you can change for any key you want
+XOR_KEY = b'secret123' # here you can change for any key you want
 
 with open(sys.argv[1], 'rb') as f:
     raw = f.read()
@@ -13,7 +13,7 @@ if len(split) != 2:
     print("[-] Body not found for raw data")
     sys.exit(1)
 
-body = split[1]  # allowing just what commes after the headers
+body = split[1]  # allowing only what commes after the headers
 
 decrypted = xor(body, XOR_KEY)
 

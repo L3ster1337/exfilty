@@ -27,7 +27,7 @@ The tool will read the file, apply XOR encryption using a predefined key, and se
 
 ## Encryption Logic
 
-Exfilty uses a symmetric XOR cipher with a static key (`secreta123` by default). This key must match on both ends of communication (sender and receiver).
+Exfilty uses a symmetric XOR cipher with a static key (`secret123` by default). This key must match on both ends of communication (sender and receiver).
 
 You can reconstruct the original file using the provided `remounter.py` script:
 

